@@ -11,18 +11,18 @@ void main() async{
         accentColor: Colors.white,
         textTheme: GoogleFonts.latoTextTheme(),
       ),
-      home:Shop()
+      home:Shop2()
   ));
 }
 
 
-class Shop extends StatefulWidget {
+class Shop2 extends StatefulWidget {
 
   @override
   _ShopState createState() => _ShopState();
 }
 
-class _ShopState extends State<Shop> {
+class _ShopState extends State<Shop2> {
   List<Product> products =[
     Product(productName: 'brush', quantity: 50, price: 20),
     Product(productName: 'cage', quantity: 30, price: 40),
@@ -78,10 +78,10 @@ class _ShopState extends State<Shop> {
             flex: 7,
             child: SingleChildScrollView(
               child: Container(
-                padding: EdgeInsets.all(40),
-                child: Column(
-                  children: products.map((prod)=>  MyCardWidget(prod: prod)).toList()
-                )
+                  padding: EdgeInsets.all(40),
+                  child: Column(
+                      children: products.map((prod)=>  MyCardWidget2(prod: prod)).toList()
+                  )
               ),
             ),
           )
