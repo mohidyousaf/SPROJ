@@ -9,7 +9,7 @@ void main() async{
         accentColor: Colors.white,
         textTheme: GoogleFonts.latoTextTheme(),
       ),
-      home: Boarding()
+      home: Boarding() 
   ));
 }
 
