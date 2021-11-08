@@ -1,9 +1,22 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyCardWidget());
+// void main() => runApp(MyCardWidget());
+
+class Product{
+  String productName;
+  int quantity;
+  int price;
+
+  Product({required this.productName, required this.quantity, required this.price});
+
+}
+
 
 class MyCardWidget extends StatelessWidget {
-  MyCardWidget({Key? key}) : super(key: key);
+  // MyCardWidget({Key? key}) : super(key: key);
+  final Product prod;
+  MyCardWidget({required this.prod});
+
 
   @override
   Widget build(BuildContext context) {
@@ -23,19 +36,19 @@ class MyCardWidget extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
 
-                const ListTile(
+                ListTile(
 
                   //ImagrOverLay: AssetImage('assets/dogcollor.jpg'),
                   //Image(image: AssetImage('assets/dogcollor.jpg'),
                   leading: Icon(Icons.pets, size: 60),
                   title: Text(
-                      'Dog Collar',
+                      prod.productName,
                       style: TextStyle(fontSize: 25.0)
                   ),
                   subtitle: Text(
                       'size: M   '
-                          'quantity:10\n'
-                          'Price: Rs50\n ',
+                          'quantity:${prod.quantity}\n'
+                          'Price: Rs${prod.price}\n ',
                       style: TextStyle(fontSize: 18.0)
                   ),
                 ),
