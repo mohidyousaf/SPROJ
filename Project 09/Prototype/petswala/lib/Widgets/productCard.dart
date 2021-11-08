@@ -97,7 +97,7 @@ class MyCardWidget2 extends StatelessWidget {
     return Center(
         child: Container(
           width: 300,
-          height: 200,
+          height: 150,
           padding: new EdgeInsets.all(10.0),
           child: Card(
             shape: RoundedRectangleBorder(
