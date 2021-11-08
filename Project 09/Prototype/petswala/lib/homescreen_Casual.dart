@@ -5,19 +5,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() async{
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp(MaterialApp(
-      theme: ThemeData(
-        primaryColor: Color.fromRGBO(11, 71, 109, 1.0),
-        accentColor: Colors.white,
-        textTheme: GoogleFonts.latoTextTheme(),
-      ),
-      home: HomeScreen()
-  ));
-}
+// void main() async{
+//   WidgetsFlutterBinding.ensureInitialized();
+//   runApp(MaterialApp(
+//       theme: ThemeData(
+//         primaryColor: Color.fromRGBO(11, 71, 109, 1.0),
+//         accentColor: Colors.white,
+//         textTheme: GoogleFonts.latoTextTheme(),
+//       ),
+//       home: HomeScreen()
+//   ));
+// }
 
 class HomeScreen extends StatelessWidget {
+  final categoryList = CategoryData().categoryList;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,6 +81,7 @@ class HomeScreen extends StatelessWidget {
                   padding: const EdgeInsets.fromLTRB(30,5,30,20),
                   child: TextField(
                     onChanged: (text){
+                      Navigator.pushNamed(context, '/search');
                     },
                     decoration: InputDecoration(
                       suffixIcon: Icon(Icons.search),
@@ -125,10 +127,10 @@ class HomeScreen extends StatelessWidget {
                     height: 150,
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
-                      itemCount: 15,
+                      itemCount: categoryList.length,
                       padding: EdgeInsets.fromLTRB(20, 0, 30, 0),
-                      itemBuilder: (context, int) {
-                        return Card();
+                      itemBuilder: (context, index) {
+                        return CategoryCard(category:categoryList[index]);
                       },
                       separatorBuilder: (context, int) {
                         return SizedBox(width: 10);
@@ -210,7 +212,7 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                     onPressed: () {
-                      // Navigator.pushNamed(context, '/reportsHome');
+                      Navigator.pushNamed(context, '/home');
                     }
                 ),
                 TextButton(
@@ -227,7 +229,7 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                     onPressed: () {
-                      // Navigator.pushNamed(context, '/reportsHome');
+                      Navigator.pushNamed(context, '/market');
                     }
                 ),
                 TextButton(
@@ -241,7 +243,7 @@ class HomeScreen extends StatelessWidget {
                       width: 35,),
                     ),
                     onPressed: () {
-                      // Navigator.pushNamed(context, '/reportsHome');
+                      Navigator.pushNamed(context, '/rescue');
                     }
                 ),
                 TextButton(
@@ -273,7 +275,7 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                   onPressed: () {
-                    // Navigator.pushNamed(context, '/inventory');
+                    Navigator.pushNamed(context, '/profile');
                   },
                 ),
               ]
@@ -283,38 +285,63 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class Card extends StatelessWidget {
+class CategoryCard extends StatelessWidget {
+  Category category;
+  CategoryCard({required this.category});
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            color: Color.fromRGBO(255, 149, 149, 1),
-            borderRadius: BorderRadius.all(Radius.circular(20)),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
-            child:
-                Image.asset('assets/grooming.png',
-                  fit: BoxFit.cover,
-                  height: 60,
-                  width: 60,
-                  ),
+    return TextButton(
+      onPressed: (){
+          Navigator.pushNamed(context, category.link);
+      },
+      child: Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: Color.fromRGBO(255, 149, 149, 1),
+              borderRadius: BorderRadius.all(Radius.circular(20)),
             ),
-          ),
-        Padding(
-          padding: const EdgeInsets.only(top: 8),
-          child: Text('Grooming',
-            style:GoogleFonts.lato(
-                fontSize: 14,
-                color: Colors.black54,
-                fontWeight: FontWeight.normal
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+              child:
+                  Image.asset(category.imLink,
+                    fit: BoxFit.cover,
+                    height: 60,
+                    width: 60,
+                    ),
+              ),
             ),
-            textAlign: TextAlign.left
-            ,),
-        ),
-      ],
+          Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: Text(category.name,
+              style:GoogleFonts.lato(
+                  fontSize: 14,
+                  color: Colors.black54,
+                  fontWeight: FontWeight.normal
+              ),
+              textAlign: TextAlign.left
+              ,),
+          ),
+        ],
+      ),
     );
   }
+}
+
+class Category {
+  String imLink = '';
+  String name = '';
+  String link = '/home';
+  Category({required this.imLink, required this.name,required this.link});
+
+}
+
+class CategoryData {
+  List<Category> categoryList = [
+    Category(imLink:'assets/stethoscope.png', name:'Vet', link:'/maintenance'),
+    Category(imLink:'assets/daycare-center.png', name:'Daycare', link:'/maintenance'),
+    Category(imLink:'assets/dog-training.png', name:'Training', link:'/maintenance'),
+    Category(imLink:'assets/dog_walking.png', name:'Walking', link:'/maintenance'),
+    Category(imLink:'assets/grooming.png', name:'Grooming', link:'/maintenance'),
+  ];
 }

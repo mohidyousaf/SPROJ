@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 //import 'package:toggle_bar/toggle_bar.dart';
+import 'package:petswala/homescreen_Casual.dart';
+import 'package:petswala/boardingScreen.dart';
+import 'package:petswala/profile.dart';
+import 'package:petswala/map.dart';
+import 'package:petswala/underMaintenance.dart';
+import 'package:petswala/homescreen_Shop.dart';
+import 'package:petswala/userMarketPlace.dart';
+import 'package:petswala/SearchPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,16 +16,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text('Inventory')),
-
-          // ToggleBar(
-          //     labels: ["Pets", "Accessories"],
-          //     onSelectionUpdated: (index) => // switch frm pets to accessories
-          // )
-        body: MyCardWidget(),
-        //body: MyCardWidget(),
-      ),
+      routes: {
+        '/': (context) => Boarding(),
+        '/home': (context) => HomeScreen(),
+        '/profile': (context) => Profile(),
+        '/rescue': (context) => RescueMap(),
+        '/maintenance': (context) => Maintenance(),
+        '/shop': (context) => Shop(),
+        '/market': (context) => Shop2(),
+        '/search': (context) => Search(),
+      },
     );
   }
 }

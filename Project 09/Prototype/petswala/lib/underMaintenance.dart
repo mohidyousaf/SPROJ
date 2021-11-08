@@ -3,18 +3,20 @@ import 'package:flutter/material.dart';
 // import 'package:page_transition/page_transition.dart';
 import 'package:petswala/profile.dart';
 
-void main() => runApp(MyApp());
+import 'homescreen_Casual.dart';
 
-class MyApp extends StatelessWidget {
+// void main() => runApp(MyApp());
+
+class Maintenance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Clean Code',
         home: AnimatedSplashScreen(
-            duration: 300,
+            duration: 1500,
             splashIconSize: 500,
             splash: new Image.asset('assets/maintenance.jpg'),
-            nextScreen: Profile(),
+            nextScreen: HomeScreen(),
             splashTransition: SplashTransition.fadeTransition,
             // pageTransitionType: PageTransitionType.scale,
             backgroundColor: Colors.white
@@ -23,11 +25,11 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MainScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.redAccent,
-    );
-  }
-}
+// class MainScreen extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       color: Colors.redAccent,
+//     );
+//   }
+// }

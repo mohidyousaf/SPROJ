@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() async{
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp(MaterialApp(
-      theme: ThemeData(
-      primaryColor: Color.fromRGBO(11, 71, 109, 1.0),
-        accentColor: Colors.white,
-        textTheme: GoogleFonts.latoTextTheme(),
-      ),
-      home: Boarding() 
-  ));
-}
+// void main() async{
+//   WidgetsFlutterBinding.ensureInitialized();
+//   runApp(MaterialApp(
+//       theme: ThemeData(
+//       primaryColor: Color.fromRGBO(11, 71, 109, 1.0),
+//         accentColor: Colors.white,
+//         textTheme: GoogleFonts.latoTextTheme(),
+//       ),
+//       home: Boarding()
+//   ));
+// }
 
 
 class Boarding extends StatefulWidget {
@@ -42,6 +42,7 @@ class _BoardingState extends State<Boarding> {
             children: <Widget>[
               GestureDetector(
                 onTap: () {
+                  Navigator.pushNamed(context, '/home');
                 }, // handle your image tap here
                 child: Image.asset(
                   'assets/User.png',
@@ -52,6 +53,7 @@ class _BoardingState extends State<Boarding> {
               ),
               GestureDetector(
                 onTap: () {
+                  Navigator.pushNamed(context, '/shop');
                 }, // handle your image tap here
                 child: Image.asset(
                   'assets/Owner.png',

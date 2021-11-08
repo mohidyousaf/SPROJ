@@ -3,17 +3,17 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:petswala/Widgets/Search.dart';
 import 'package:petswala/Widgets/productCard.dart';
 
-void main() async{
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp(MaterialApp(
-      theme: ThemeData(
-        primaryColor: Color.fromRGBO(11, 71, 109, 1.0),
-        accentColor: Colors.white,
-        textTheme: GoogleFonts.latoTextTheme(),
-      ),
-      home:Shop()
-  ));
-}
+// void main() async{
+//   WidgetsFlutterBinding.ensureInitialized();
+//   runApp(MaterialApp(
+//       theme: ThemeData(
+//         primaryColor: Color.fromRGBO(11, 71, 109, 1.0),
+//         accentColor: Colors.white,
+//         textTheme: GoogleFonts.latoTextTheme(),
+//       ),
+//       home:Shop()
+//   ));
+// }
 
 
 class Shop extends StatefulWidget {
