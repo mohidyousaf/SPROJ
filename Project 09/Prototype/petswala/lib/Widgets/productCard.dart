@@ -7,7 +7,7 @@ class Product{
   int quantity;
   int price;
 
-  Product({required this.productName, required this.quantity, required this.price});
+  Product({ this.productName,  this.quantity,  this.price});
 
 }
 
@@ -15,7 +15,7 @@ class Product{
 class MyCardWidget extends StatelessWidget {
   // MyCardWidget({Key? key}) : super(key: key);
   final Product prod;
-  MyCardWidget({required this.prod});
+  MyCardWidget({ this.prod});
 
 
   @override
@@ -89,7 +89,7 @@ class MyCardWidget extends StatelessWidget {
 class MyCardWidget2 extends StatelessWidget {
   // MyCardWidget({Key? key}) : super(key: key);
   final Product prod;
-  MyCardWidget2({required this.prod});
+  MyCardWidget2({ this.prod});
 
 
   @override

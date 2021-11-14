@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:petswala/Widgets/Navbars.dart';
 
 // void main() async{
 //   WidgetsFlutterBinding.ensureInitialized();
@@ -23,6 +24,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      bottomNavigationBar: BottomNavBar(context),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
@@ -124,7 +126,7 @@ class HomeScreen extends StatelessWidget {
                       ,),
                   ),
                   Container(
-                    height: 150,
+                    height: 180,
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
                       itemCount: categoryList.length,
@@ -152,7 +154,7 @@ class HomeScreen extends StatelessWidget {
                           padding: const EdgeInsets.fromLTRB(20,0,30,20),
                           child: GestureDetector(
                             onTap: (){
-
+                                Navigator.pushNamed(context, '/feed');
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -185,7 +187,7 @@ class HomeScreen extends StatelessWidget {
                           ),
                             child: GestureDetector(
                                 onTap: (){
-                                    print('object');
+                                  Navigator.pushNamed(context, '/feed');
                                 },
                                 child: Image.asset('assets/collage.png'))))
                       ],
@@ -195,91 +197,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          Row(
-            // crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                TextButton(
-                    child:Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                      Image.asset('assets/home.png',
-                             height: 30,
-                              width: 30,),
-                        // Text('Home', style:  GoogleFonts.lato(textStyle: TextStyle(color: Color.fromRGBO(11, 71, 109, 1.0)))),
-                      ],
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/home');
-                    }
-                ),
-                TextButton(
-                    child:Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 4),
-                        child: Image.asset('assets/marketplace.png',
-                          height: 25,
-                          width: 25,),
-                      ),
-                        // Text('Shop', style:  GoogleFonts.lato(textStyle: TextStyle(color: Color.fromRGBO(11, 71, 109, 1.0)))),
-                      ],
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/market');
-                    }
-                ),
-                TextButton(
-                    child:Container(
-                      padding: EdgeInsets.only(bottom: 5),
-                      decoration: BoxDecoration(
-                        color: Colors.white12
-                      ),
-                      child: Image.asset('assets/emergency-call.png',
-                      height: 35,
-                      width: 35,),
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/rescue');
-                    }
-                ),
-                TextButton(
-                    child:Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                      Icon(Icons.chat_outlined,
-                              color: Color.fromRGBO(84, 84, 84, .6),
-                              size: 28,),
-                        // Text('Edit', style:  GoogleFonts.lato(textStyle: TextStyle(color: Color.fromRGBO(11, 71, 109, 1.0)))),
-                      ],
-                    ),
-                    onPressed: () {
-                      // Navigator.pushNamed(context, '/reportsHome');
-                    }
-                ),
-                TextButton(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(
-                          Icons.person_outline_outlined,
-                          color: Color.fromRGBO(84, 84, 84, .6),
-                          size: 32
-                        ),
-                      // Text('Profile', style:
-                      // GoogleFonts.lato(textStyle: TextStyle(color: Color.fromRGBO(11, 71, 109, 1.0))),
-                      // ),
-                    ],
-                  ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/profile');
-                  },
-                ),
-              ]
-          )
+
          ]),
     );
   }
@@ -287,7 +205,7 @@ class HomeScreen extends StatelessWidget {
 
 class CategoryCard extends StatelessWidget {
   Category category;
-  CategoryCard({required this.category});
+  CategoryCard({ this.category});
   @override
   Widget build(BuildContext context) {
     return TextButton(
@@ -332,7 +250,7 @@ class Category {
   String imLink = '';
   String name = '';
   String link = '/home';
-  Category({required this.imLink, required this.name,required this.link});
+  Category({ this.imLink,  this.name, this.link});
 
 }
 

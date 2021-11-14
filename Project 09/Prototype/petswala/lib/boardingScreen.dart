@@ -22,6 +22,7 @@ class Boarding extends StatefulWidget {
 class _BoardingState extends State<Boarding> {
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
@@ -42,7 +43,7 @@ class _BoardingState extends State<Boarding> {
             children: <Widget>[
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, '/home');
+                  Navigator.pushNamed(context, '/name', arguments: {'type':'user'});
                 }, // handle your image tap here
                 child: Image.asset(
                   'assets/User.png',
@@ -53,7 +54,7 @@ class _BoardingState extends State<Boarding> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, '/shop');
+                  Navigator.pushNamed(context, '/name', arguments: {'type':'shop'});
                 }, // handle your image tap here
                 child: Image.asset(
                   'assets/Owner.png',

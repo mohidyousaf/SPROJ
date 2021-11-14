@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:petswala/Widgets/Search.dart';
 import 'package:petswala/Widgets/productCard.dart';
-
+import 'package:petswala/Widgets/Navbars.dart';
+import 'package:petswala/api.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MaterialApp(
@@ -23,15 +24,25 @@ class Shop2 extends StatefulWidget {
 }
 
 class _ShopState extends State<Shop2> {
-  List<Product> products =[
-    Product(productName: 'brush', quantity: 50, price: 20),
-    Product(productName: 'cage', quantity: 30, price: 40),
-    Product(productName: 'food', quantity: 40, price: 100),
-    Product(productName: 'door', quantity: 40, price: 20)
-  ];
+  Future getData() async{
+    print('two');
+    List<Product> temp = await getProducts();
+    setState(() {
+      print('hello');
+      products = temp;
+    });
+  }
+  @override
+  void initState() {
+    super.initState();
+    print('one');
+    getData();
+  }
+  List<Product> products =[];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavBar(context),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
@@ -90,4 +101,18 @@ class _ShopState extends State<Shop2> {
       ),
     );
   }
+}
+
+Future<List<Product>> getProducts() async{
+  ProductsApi api = ProductsApi();
+  List<Product> products = [];
+  (await api.getAllProducts()).forEach((element) {
+    products.add(
+        Product(productName: element.productname,
+            quantity: element.quantity,
+            price: element.price));
+  }
+  );
+  
+  return products;
 }

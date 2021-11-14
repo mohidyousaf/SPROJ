@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 //import 'package:toggle_bar/toggle_bar.dart';
+import 'package:http/io_client.dart';
+import 'dart:io';
+import 'package:http/http.dart';
+import 'dart:async';
+import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:petswala/homescreen_Casual.dart';
 import 'package:petswala/boardingScreen.dart';
 import 'package:petswala/profile.dart';
@@ -8,8 +14,24 @@ import 'package:petswala/underMaintenance.dart';
 import 'package:petswala/homescreen_Shop.dart';
 import 'package:petswala/userMarketPlace.dart';
 import 'package:petswala/SearchPage.dart';
+import 'package:petswala/addItem.dart';
+import 'package:petswala/newsFeed.dart';
+import 'package:petswala/name.dart';
+import 'package:petswala/DataBase.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  HttpOverrides.global = new MyHttpOverrides();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  if (prefs.containsKey('name')){
+    var name = prefs.getString('name');
+    var type = prefs.getString('type');
+    print(name);
+    print(type);
+  }
+  start();
+  runApp(MyApp());
+}
 
 /// This Widget is the main application widget.
 class MyApp extends StatelessWidget {
@@ -18,6 +40,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       routes: {
         '/': (context) => Boarding(),
+        '/name': (context) => Name(),
         '/home': (context) => HomeScreen(),
         '/profile': (context) => Profile(),
         '/rescue': (context) => RescueMap(),
@@ -25,6 +48,8 @@ class MyApp extends StatelessWidget {
         '/shop': (context) => Shop(),
         '/market': (context) => Shop2(),
         '/search': (context) => Search(),
+        '/feed': (context) => newsFeed(),
+        '/addItem': (context) => AddItem(),
       },
     );
   }
@@ -32,7 +57,7 @@ class MyApp extends StatelessWidget {
 
 /// This is the stateless widget that the main application instantiates.
 class MyCardWidget extends StatelessWidget {
-  MyCardWidget({Key? key}) : super(key: key);
+  MyCardWidget({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -99,5 +124,13 @@ class MyCardWidget extends StatelessWidget {
           ),
         )
     );
+  }
+}
+
+class MyHttpOverrides extends HttpOverrides{
+  @override
+  HttpClient createHttpClient(SecurityContext context){
+    return super.createHttpClient(context)
+      ..badCertificateCallback = (X509Certificate cert, String host, int port)=> true;
   }
 }

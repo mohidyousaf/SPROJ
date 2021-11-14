@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:petswala/Widgets/Search.dart';
 import 'package:petswala/Widgets/productCard.dart';
+import 'package:petswala/addItem.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
 // void main() async{
@@ -58,6 +59,19 @@ class _ShopState extends State<Shop> {
                       Image.asset('assets/logo.png'),
 
                       SearchBar(),
+                      // TextButton(
+                      //   onPressed: (){
+                      //     Navigator.pushNamed(context, '/addItem', arguments: {'inventory':widget.inventory});
+                      //   },
+                      //   child: Container(
+                      //     decoration: BoxDecoration(
+                      //       color: Colors.white,
+                      //       borderRadius: BorderRadius.all(Radius.circular(15)),
+                      //       border: Border.all()
+                      //     ),
+                      //     child: Text('Add New Item'),
+                      //   ),
+                      // )
 
                       // CircleAvatar(
                       //   backgroundImage: AssetImage('assets/User.png'),
