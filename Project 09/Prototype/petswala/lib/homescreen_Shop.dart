@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:petswala/Widgets/Search.dart';
 import 'package:petswala/Widgets/productCard.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 
 // void main() async{
 //   WidgetsFlutterBinding.ensureInitialized();
@@ -24,10 +25,10 @@ class Shop extends StatefulWidget {
 
 class _ShopState extends State<Shop> {
   List<Product> products =[
-    Product(productName: 'brush', quantity: 50, price: 20),
-    Product(productName: 'cage', quantity: 30, price: 40),
-    Product(productName: 'food', quantity: 40, price: 100),
-    Product(productName: 'door', quantity: 40, price: 20)
+    Product(productName: 'Brush', quantity: 50, price: 20),
+    Product(productName: 'Cage', quantity: 30, price: 40),
+    Product(productName: 'Food', quantity: 40, price: 100),
+    Product(productName: 'Door', quantity: 40, price: 20)
   ];
   @override
   Widget build(BuildContext context) {
@@ -58,7 +59,9 @@ class _ShopState extends State<Shop> {
                       // ),
                       // Text('Chun-Li', style: GoogleFonts.lato(textStyle: TextStyle(color: Color.fromRGBO(11, 71, 109, 1.0),fontSize: 25, fontWeight: FontWeight.bold )))
                     ],
+
                   ),
+
                   // width: 80,
                   // height: 200,
                   decoration: BoxDecoration(
@@ -74,12 +77,29 @@ class _ShopState extends State<Shop> {
             ),
           ),
 
+
+            ToggleSwitch(
+              minWidth: 90.0,
+              initialLabelIndex: 0,
+              activeFgColor: Colors.white,
+              inactiveBgColor: Colors.grey,
+              inactiveFgColor: Colors.black,
+              activeBgColor: [
+                Color.fromRGBO(255, 131, 127, 1).withOpacity(0.9)
+              ],
+              totalSwitches: 2,
+              labels: ['Pets', 'Accessories'],
+              onToggle: (index) {
+                print('switched to: $index');
+              },
+            ),
           Expanded(
             flex: 7,
             child: SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.all(40),
                 child: Column(
+
                   children: products.map((prod)=>  MyCardWidget(prod: prod)).toList()
                 )
               ),
@@ -90,4 +110,34 @@ class _ShopState extends State<Shop> {
       ),
     );
   }
-}
+ }
+//   @override
+//   State<StatefulWidget> createState() {
+//     //
+//     throw UnimplementedError();
+//   }
+//
+// class toggles extends StatelessWidget {
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//         child: Container(
+//           child: ToggleSwitch(
+//             minWidth: 90.0,
+//             cornerRadius: 20.0,
+//             activeBgColors: [[Colors.cyan], [Colors.redAccent]],
+//             activeFgColor: Colors.white,
+//             inactiveBgColor: Colors.grey,
+//             inactiveFgColor: Colors.white,
+//             totalSwitches: 2,
+//             labels: ['YES', ''],
+//
+//             onToggle: (index) {
+//               print('switched to: $index');
+//             },
+//           ),
+//         )
+//     );
+//   }
+// }
