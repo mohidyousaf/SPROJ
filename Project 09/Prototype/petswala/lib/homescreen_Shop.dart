@@ -30,6 +30,7 @@ class _ShopState extends State<Shop> {
     Product(productName: 'Food', quantity: 40, price: 100),
     Product(productName: 'Door', quantity: 40, price: 20)
   ];
+  bool value=true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,38 +79,62 @@ class _ShopState extends State<Shop> {
           ),
 
 
-            ToggleSwitch(
-              minWidth: 90.0,
-              initialLabelIndex: 0,
-              activeFgColor: Colors.white,
-              inactiveBgColor: Colors.grey,
-              inactiveFgColor: Colors.black,
-              activeBgColor: [
-                Color.fromRGBO(255, 131, 127, 1).withOpacity(0.9)
-              ],
-              totalSwitches: 2,
-              labels: ['Pets', 'Accessories'],
-              onToggle: (index) {
-                print('switched to: $index');
-              },
-            ),
           Expanded(
             flex: 7,
-            child: SingleChildScrollView(
-              child: Container(
-                padding: EdgeInsets.all(40),
-                child: Column(
-
-                  children: products.map((prod)=>  MyCardWidget(prod: prod)).toList()
-                )
+            child
+                : SingleChildScrollView(
+child: Column(
+              children: <Widget>[
+               Padding(
+                 padding: EdgeInsets.all(20),
+               child:  buildSwitch(),
               ),
-            ),
+
+              Container(
+
+                padding: EdgeInsets.all(40),
+                child:  Column(
+
+                  children: value ? products.map((prod)=>  MyCardWidget(prod: prod)).toList() : products.map((prod)=>  MyCardWidget(prod: prod)).toList()
+                )
+              )
+                  ]
+              ),
+              ),
           )
 
-        ],
+            ]
       ),
-    );
+          );
+
   }
+
+  Widget buildSwitch() => Transform.scale(
+    scale: 2,
+    child: ToggleSwitch(
+      minWidth: 40.0,
+      minHeight: 25.0,
+      fontSize: 10.0,
+      initialLabelIndex: 1,
+      activeBgColor: [Color.fromRGBO(255, 131, 127, 1).withOpacity(0.9)],
+      activeFgColor: Colors.white,
+      inactiveBgColor: Colors.grey,
+      inactiveFgColor: Colors.grey[900],
+      totalSwitches: 2,
+      labels: ['Pets', 'Accessories'],
+      onToggle: (value) {
+        print('switched to: $value');
+      },
+    ),
+    // child: Switch.adaptive(
+    //   thumbColor:   MaterialStateProperty.all(Colors.red),
+    //   trackColor:  MaterialStateProperty.all(Colors.grey),
+    //
+    //   splashRadius: 50,
+    //   value: value,
+    //   onChanged: (value) => setState(() => this.value = value),
+    // ),
+  );
  }
 //   @override
 //   State<StatefulWidget> createState() {
@@ -117,27 +142,3 @@ class _ShopState extends State<Shop> {
 //     throw UnimplementedError();
 //   }
 //
-// class toggles extends StatelessWidget {
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Center(
-//         child: Container(
-//           child: ToggleSwitch(
-//             minWidth: 90.0,
-//             cornerRadius: 20.0,
-//             activeBgColors: [[Colors.cyan], [Colors.redAccent]],
-//             activeFgColor: Colors.white,
-//             inactiveBgColor: Colors.grey,
-//             inactiveFgColor: Colors.white,
-//             totalSwitches: 2,
-//             labels: ['YES', ''],
-//
-//             onToggle: (index) {
-//               print('switched to: $index');
-//             },
-//           ),
-//         )
-//     );
-//   }
-// }
