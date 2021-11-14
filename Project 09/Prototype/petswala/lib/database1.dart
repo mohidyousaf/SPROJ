@@ -5,10 +5,12 @@ final CollectionReference _mainCollection = _firestore.collection('users');
 
 class Database {
   static String? userUid;
+  
 
   static Future<void> addUsers({
     required String address,
     required int contactnumber,
+    required String email,
     required String password,
     required String usertype,
   }) async {
@@ -18,6 +20,7 @@ class Database {
     Map<String, dynamic> data = <String, dynamic>{
       "address": address,
       "contactnumber": contactnumber,
+      "email": email,
       "password": password,
       "usertype": usertype,
     };
@@ -29,7 +32,6 @@ class Database {
   }
 
   static Future<void> addCommonUsers({
-    required String email,
     required bool ispetowner,
     required String profilepicture,
     required String status,
@@ -39,7 +41,6 @@ class Database {
         _mainCollection.doc(userUid).collection('CommonUsers').doc();
 
     Map<String, dynamic> data = <String, dynamic>{
-      "email": email,
       "ispetowner": ispetowner,
       "profilepicture":profilepicture,
       "status":status,
@@ -124,6 +125,7 @@ class Database {
   static Future<void> updateUsers({
     required String address,
     required int contactnumber,
+    required String email,
     required String password,
     required String usertype,
   }) async {
@@ -133,6 +135,7 @@ class Database {
     Map<String, dynamic> data = <String, dynamic>{
       "address": address,
       "contactnumber": contactnumber,
+      "email": email,
       "password": password,
       "usertype": usertype,
     };
@@ -144,7 +147,6 @@ class Database {
   }
 
   static Future<void> updateCommonUsers({
-    required String email,
     required bool ispetowner,
     required String profilepicture,
     required String status,
@@ -155,7 +157,6 @@ class Database {
         _mainCollection.doc(userUid).collection('CommonUsers').doc(docID);
 
     Map<String, dynamic> data = <String, dynamic>{
-      "email": email,
       "ispetowner": ispetowner,
       "profilepicture":profilepicture,
       "status":status,
