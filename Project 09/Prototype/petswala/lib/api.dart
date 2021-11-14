@@ -5,8 +5,8 @@ import 'package:petswala/storeitem.dart';
 class ProductsApi {
   final _dio = Dio(BaseOptions(baseUrl: 'http://10.0.2.2:8081/'));
 
-  Future<List<Storeitem>> getPSProducts() async {
-    final response = await _dio.get('PSProducts');
+  Future<List<Storeitem>> getPSProducts(String storename) async {
+    final response = await _dio.post('PSProducts' , data: { "storename":storename);
     return (response.data['products'] as List)
         .map<Storeitem>((json) => Storeitem.fromJson(json))
         .toList();

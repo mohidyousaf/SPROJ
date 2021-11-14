@@ -31,7 +31,7 @@ void start() async {
     }
   ]);
 
-  serv.get('/PSProducts/', [
+  serv.post('/PSProducts/', [
     setCors,
     (ServRequest req, ServResponse res) async {
       dynamic found  = await db.collection("Products").find({"storename":req.body['storename']}).toList();; 
