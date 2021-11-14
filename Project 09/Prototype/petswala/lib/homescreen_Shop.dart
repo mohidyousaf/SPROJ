@@ -30,6 +30,12 @@ class _ShopState extends State<Shop> {
     Product(productName: 'Food', quantity: 40, price: 100),
     Product(productName: 'Door', quantity: 40, price: 20)
   ];
+  List<Product> pets =[
+    Product(productName: 'Cats', quantity: 50, price: 20),
+    Product(productName: 'Dogs', quantity: 30, price: 40),
+    Product(productName: 'Rabbits', quantity: 40, price: 100),
+    Product(productName: 'Hamster', quantity: 40, price: 20)
+  ];
   bool value=true;
   @override
   Widget build(BuildContext context) {
@@ -95,7 +101,7 @@ child: Column(
                 padding: EdgeInsets.all(40),
                 child:  Column(
 
-                  children: value ? products.map((prod)=>  MyCardWidget(prod: prod)).toList() : products.map((prod)=>  MyCardWidget(prod: prod)).toList()
+                  children: value ? pets.map((prod_)=>  MyCardWidget(prod: prod_)).toList() : products.map((prod_a)=>  MyCardWidget(prod: prod_a)).toList()
                 )
               )
                   ]
@@ -109,12 +115,12 @@ child: Column(
 
   }
 
-  Widget buildSwitch() => Transform.scale(
+  Widget buildSwitch()=> Transform.scale(
     scale: 2,
     child: ToggleSwitch(
-      minWidth: 40.0,
-      minHeight: 25.0,
-      fontSize: 10.0,
+      minWidth: 60.0,
+      minHeight: 20.0,
+      fontSize: 8.0,
       initialLabelIndex: 1,
       activeBgColor: [Color.fromRGBO(255, 131, 127, 1).withOpacity(0.9)],
       activeFgColor: Colors.white,
@@ -127,10 +133,8 @@ child: Column(
       },
     ),
     // child: Switch.adaptive(
-    //   thumbColor:   MaterialStateProperty.all(Colors.red),
-    //   trackColor:  MaterialStateProperty.all(Colors.grey),
     //
-    //   splashRadius: 50,
+
     //   value: value,
     //   onChanged: (value) => setState(() => this.value = value),
     // ),
