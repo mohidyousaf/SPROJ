@@ -18,6 +18,7 @@ import 'package:petswala/addItem.dart';
 import 'package:petswala/newsFeed.dart';
 import 'package:petswala/name.dart';
 import 'package:petswala/DataBase.dart';
+import 'package:petswala/demo.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,6 +32,11 @@ void main() async {
   }
   start();
   runApp(MyApp());
+  // var db = await DBConnection.getInstance();
+  // print('hello');
+  // print(await db.getAllProducts());
+  // print('hello2');
+
 }
 
 /// This Widget is the main application widget.

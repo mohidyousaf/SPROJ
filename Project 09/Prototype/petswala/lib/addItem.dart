@@ -9,7 +9,7 @@ import 'package:petswala/Widgets/textfield.dart';
 import 'package:petswala/Widgets/validationFunctions.dart';
 import 'dart:math' as math;
 import 'package:petswala/Widgets/productCard.dart';
-
+import 'package:petswala/demo.dart';
 import 'Widgets/productCard.dart';
 
 //The parent class for Sign Up.
@@ -137,7 +137,7 @@ class _AddItemState extends State<AddItem> {
                               child: TextButton(
                                 onPressed: () async{
                                   if (_formKey.currentState.validate()) {
-                                    // widget.inventory.addNewItem(Price.text, Name.text, Quantity.text);
+                                    addNewItem(Price.text, Name.text, Quantity.text);
                                     Navigator.popAndPushNamed(context, '/shop');
                                   }
                                   else{
@@ -183,4 +183,9 @@ class Item{
   double price;
   String name;
   Item({this.price:0, this.name:""});
+}
+
+addNewItem(price, productName, quantity) async{
+  var db = await DBConnection.getInstance();
+  print(await db.addProduct(productName, price, quantity));
 }

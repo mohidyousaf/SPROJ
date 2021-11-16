@@ -4,7 +4,7 @@ import 'package:petswala/Widgets/Search.dart';
 import 'package:petswala/Widgets/productCard.dart';
 import 'package:petswala/addItem.dart';
 import 'package:toggle_switch/toggle_switch.dart';
-
+import 'package:petswala/demo.dart';
 // void main() async{
 //   WidgetsFlutterBinding.ensureInitialized();
 //   runApp(MaterialApp(
@@ -25,18 +25,33 @@ class Shop extends StatefulWidget {
 }
 
 class _ShopState extends State<Shop> {
-  List<Product> products =[
-    Product(productName: 'Brush', quantity: 50, price: 20),
-    Product(productName: 'Cage', quantity: 30, price: 40),
-    Product(productName: 'Food', quantity: 40, price: 100),
-    Product(productName: 'Door', quantity: 40, price: 20)
-  ];
+  // List<Product> products =[
+  //   Product(productName: 'Brush', quantity: 50, price: 20),
+  //   Product(productName: 'Cage', quantity: 30, price: 40),
+  //   Product(productName: 'Food', quantity: 40, price: 100),
+  //   Product(productName: 'Door', quantity: 40, price: 20)
+  // ];
   List<Product> pets =[
     Product(productName: 'Cats', quantity: 50, price: 20),
     Product(productName: 'Dogs', quantity: 30, price: 40),
     Product(productName: 'Rabbits', quantity: 40, price: 100),
     Product(productName: 'Hamster', quantity: 40, price: 20)
   ];
+  Future getData() async{
+    print('two');
+    List<Product> temp = await getShopProducts();
+    setState(() {
+      print('hello');
+      products = temp;
+    });
+  }
+  @override
+  void initState() {
+    super.initState();
+    print('one');
+    getData();
+  }
+  List<Product> products =[];
   bool value=true;
   @override
   Widget build(BuildContext context) {
@@ -59,19 +74,19 @@ class _ShopState extends State<Shop> {
                       Image.asset('assets/logo.png'),
 
                       SearchBar(),
-                      // TextButton(
-                      //   onPressed: (){
-                      //     Navigator.pushNamed(context, '/addItem', arguments: {'inventory':widget.inventory});
-                      //   },
-                      //   child: Container(
-                      //     decoration: BoxDecoration(
-                      //       color: Colors.white,
-                      //       borderRadius: BorderRadius.all(Radius.circular(15)),
-                      //       border: Border.all()
-                      //     ),
-                      //     child: Text('Add New Item'),
-                      //   ),
-                      // )
+                      TextButton(
+                        onPressed: (){
+                          Navigator.pushNamed(context, '/addItem');
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all(Radius.circular(15)),
+                            border: Border.all()
+                          ),
+                          child: Text('Add New Item'),
+                        ),
+                      )
 
                       // CircleAvatar(
                       //   backgroundImage: AssetImage('assets/User.png'),
@@ -160,3 +175,8 @@ child: Column(
 //     throw UnimplementedError();
 //   }
 //
+
+Future getShopProducts() async{
+  var db = await DBConnection.getInstance();
+  print(await db.getShopProducts());
+}
