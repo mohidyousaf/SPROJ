@@ -37,7 +37,7 @@ class DBConnection {
     return {'Products': products};
   }
 
-  Future getShopProducts(shopName) async{
+  Future getShopProducts() async{
     if (_db == null){
       await getConnection();
     }

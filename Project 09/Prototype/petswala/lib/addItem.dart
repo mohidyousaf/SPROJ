@@ -35,6 +35,21 @@ class _AddItemState extends State<AddItem> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            TextButton(
+                child:Image.asset('assets/home.png',
+                  height: 30,
+                  width: 30,),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/shop');
+                }
+            ),
+          ]
+      ),
       backgroundColor: Colors.white,
       //Creating the body of the page.
       body: Column(
