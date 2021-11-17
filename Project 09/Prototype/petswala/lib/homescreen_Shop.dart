@@ -4,7 +4,7 @@ import 'package:petswala/Widgets/Search.dart';
 import 'package:petswala/Widgets/productCard.dart';
 import 'package:petswala/addItem.dart';
 import 'package:toggle_switch/toggle_switch.dart';
-
+import 'package:petswala/demo.dart';
 // void main() async{
 //   WidgetsFlutterBinding.ensureInitialized();
 //   runApp(MaterialApp(
@@ -25,22 +25,52 @@ class Shop extends StatefulWidget {
 }
 
 class _ShopState extends State<Shop> {
-  List<Product> products =[
-    Product(productName: 'Brush', quantity: 50, price: 20),
-    Product(productName: 'Cage', quantity: 30, price: 40),
-    Product(productName: 'Food', quantity: 40, price: 100),
-    Product(productName: 'Door', quantity: 40, price: 20)
-  ];
+  // List<Product> products =[
+  //   Product(productName: 'Brush', quantity: 50, price: 20),
+  //   Product(productName: 'Cage', quantity: 30, price: 40),
+  //   Product(productName: 'Food', quantity: 40, price: 100),
+  //   Product(productName: 'Door', quantity: 40, price: 20)
+  // ];
   List<Product> pets =[
     Product(productName: 'Cats', quantity: 50, price: 20),
     Product(productName: 'Dogs', quantity: 30, price: 40),
     Product(productName: 'Rabbits', quantity: 40, price: 100),
     Product(productName: 'Hamster', quantity: 40, price: 20)
   ];
+  Future getData() async{
+    print('two');
+    List<Product> temp = await getShopProducts();
+    setState(() {
+      print('hello');
+      products = temp;
+    });
+  }
+  @override
+  void initState() {
+    super.initState();
+    print('one');
+    getData();
+  }
+  List<Product> products =[];
   bool value=true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            TextButton(
+                child:Image.asset('assets/home.png',
+                  height: 30,
+                  width: 30,),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/');
+                }
+            ),
+      ]
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
@@ -49,7 +79,7 @@ class _ShopState extends State<Shop> {
           // Figma Flutter Generator Rectangle1Widget - RECTANGLE
           // Figma Flutter Generator Rectangle71Widget - RECTANGLE
           Expanded(
-            flex: 3,
+            flex: 4,
             child: SingleChildScrollView(
               child: Container(
                   padding: EdgeInsets.all(40),
@@ -59,20 +89,25 @@ class _ShopState extends State<Shop> {
                       Image.asset('assets/logo.png'),
 
                       SearchBar(),
-                      // TextButton(
-                      //   onPressed: (){
-                      //     Navigator.pushNamed(context, '/addItem', arguments: {'inventory':widget.inventory});
-                      //   },
-                      //   child: Container(
-                      //     decoration: BoxDecoration(
-                      //       color: Colors.white,
-                      //       borderRadius: BorderRadius.all(Radius.circular(15)),
-                      //       border: Border.all()
-                      //     ),
-                      //     child: Text('Add New Item'),
-                      //   ),
-                      // )
 
+                Container(
+                    height: 60.0,
+                    width: 200.0,
+                    child: Material(
+                      borderRadius: BorderRadius.circular(15.0),
+                      color: Colors.white,
+                      child:TextButton(
+                        onPressed: (){
+                          Navigator.pushNamed(context, '/addItem');
+                        },
+                        child: Text('Add New Item',
+                          style: TextStyle(
+                            color: Color.fromRGBO(255, 137, 137, 1),
+                            fontWeight: FontWeight.bold,),
+                        ),
+                      )
+                ),
+                )
                       // CircleAvatar(
                       //   backgroundImage: AssetImage('assets/User.png'),
                       //   backgroundColor:Colors.white,
@@ -160,3 +195,9 @@ child: Column(
 //     throw UnimplementedError();
 //   }
 //
+
+Future getShopProducts() async{
+
+  var db = await DBConnection.getInstance();
+  print(await db.getShopProducts());
+}
