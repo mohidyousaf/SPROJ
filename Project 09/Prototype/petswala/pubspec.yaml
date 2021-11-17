@@ -31,6 +31,7 @@ dependencies:
   sqflite: null
   shared_preferences: ^2.0.5
   mongo_dart: ^0.4.3
+  http: ^0.12.0+1
   sevr: ^1.0.4
   dio: ^3.0.10
 #  cloud_firestore: ^2.5.4

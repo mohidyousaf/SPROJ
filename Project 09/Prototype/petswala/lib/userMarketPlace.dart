@@ -4,6 +4,7 @@ import 'package:petswala/Widgets/Search.dart';
 import 'package:petswala/Widgets/productCard.dart';
 import 'package:petswala/Widgets/Navbars.dart';
 import 'package:petswala/api.dart';
+import 'package:petswala/demo.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MaterialApp(
@@ -103,16 +104,22 @@ class _ShopState extends State<Shop2> {
   }
 }
 
-Future<List<Product>> getProducts() async{
-  ProductsApi api = ProductsApi();
-  List<Product> products = [];
-  (await api.getAllProducts()).forEach((element) {
-    products.add(
-        Product(productName: element.productname,
-            quantity: element.quantity,
-            price: element.price));
-  }
-  );
-  
+// Future<List<Product>> getProducts() async{
+//   ProductsApi api = ProductsApi();
+//   List<Product> products = [];
+//   (await api.getAllProducts()).forEach((element) {
+//     products.add(
+//         Product(productName: element.productname,
+//             quantity: element.quantity,
+//             price: element.price));
+//   }
+//   );
+//
+//   return products;
+// }
+Future getProducts() async{
+
+  var db = await DBConnection.getInstance();
+  var products = await db.getAllProducts();
   return products;
 }
