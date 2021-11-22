@@ -1,4 +1,5 @@
 import 'package:mongo_dart/mongo_dart.dart' show Db, DbCollection;
+import 'package:petswala/Widgets/productCard.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 class DBConnection {
 
@@ -34,7 +35,11 @@ class DBConnection {
     }
     dynamic coll1 = _db.collection('Products');
     final products = await coll1.find().toList();
-    return {'Products': products};
+    List<Product> finalList = [];
+    var poignant = products.forEach((element) {
+      finalList.add(Product(productName:element['productname'], price:int.parse(element['price']), quantity:int.parse(element['quantity'])));
+    });
+    return finalList;
   }
 
   Future getShopProducts() async{
@@ -50,8 +55,12 @@ class DBConnection {
       print(type);
     }
     dynamic coll1 = _db.collection('Products');
-    final products = await coll1.find({"storename":name}).toList();
-    return {'Products': products};
+    List products = await coll1.find({"storename":name}).toList();
+    List<Product> finalList = [];
+    var poignant = products.forEach((element) {
+      finalList.add(Product(productName:element['productname'], price:int.parse(element['price']), quantity:int.parse(element['quantity'])));
+    });
+    return finalList;
   }
 
   addProduct(productName, price, quantity) async{

@@ -22,7 +22,7 @@ import 'package:petswala/demo.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  HttpOverrides.global = new MyHttpOverrides();
+  // HttpOverrides.global = new MyHttpOverrides();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   if (prefs.containsKey('name')){
     var name = prefs.getString('name');
@@ -30,7 +30,7 @@ void main() async {
     print(name);
     print(type);
   }
-  start();
+  // start();
   runApp(MyApp());
   // var db = await DBConnection.getInstance();
   // print('hello');

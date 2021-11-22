@@ -150,7 +150,7 @@ child: Column(
                 padding: EdgeInsets.all(40),
                 child:  Column(
 
-                  children: value ? pets.map((prod_)=>  MyCardWidget(prod: prod_)).toList() : products.map((prod_a)=>  MyCardWidget(prod: prod_a)).toList()
+                  children: value ? products.map((prod_)=>  MyCardWidget(prod: prod_)).toList() : products.map((prod_a)=>  MyCardWidget(prod: prod_a)).toList()
                 )
               )
                   ]
@@ -199,5 +199,6 @@ child: Column(
 Future getShopProducts() async{
 
   var db = await DBConnection.getInstance();
-  print(await db.getShopProducts());
+  var products = await db.getShopProducts();
+  return products;
 }
