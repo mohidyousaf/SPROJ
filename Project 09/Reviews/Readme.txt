@@ -1,4 +1,4 @@
-SPRINT-1 SUBMISSION GUIDELINES [60/110]
+SPRINT-1 SUBMISSION GUIDELINES [85/110]
 
 1. Properly tested working system deployed on an online hosting platform. 
         [25/30 ] 
@@ -9,13 +9,13 @@ SPRINT-1 SUBMISSION GUIDELINES [60/110]
 4. Updated architecture and data model must be uploaded in the respective folders on Github.
        
 5. Test case execution report. You just need to update the test cases document with testing result.
-	[0/10]
+	[10/10]
 6. Update project schedule on Github. The schedule must reflect the status of development (completed, in progress, to be done). 
 	[5/10] 
 7. This "Readme" file should be uploaded in Sprint-1 folder. 
-	[0/10]
+	[10/10]
 8. Size of the work completed
-        [15/30] 
+        [20/30] 
 
 General Comments
 
