@@ -19,17 +19,19 @@ LIST OF REQUIREMENTS COMPLETED SO FAR
 3. Delete Product
 4. User MarketPlace
 5. Dynamic Filtering by Category in MarketPlace
-6. Like Post 
+6. Like Post
 7. Settings
 8. Switch User State
 9. Create Text Post
 10. Login
 11. Edit Profile
 12. Edit Product
-13. Registration Validation 
+13. Registration Validation
 14. Inventory Dynamic Search Filtering
 15. View Profile
-16. View Community Posts.
+16. View Community Posts
+
+Tasks 2, 5, 6, 8, 9, 13, 15 assigned to other members were done by Adil and Mohid as mentioned above
 
 
 ------------------------------------------------------------------------------------------------
