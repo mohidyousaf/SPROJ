@@ -1,4 +1,4 @@
-SPRINT-1 SUBMISSION GUIDELINES [85/110]
+SPRINT-1 SUBMISSION GUIDELINES [95/110]
 
 1. Properly tested working system deployed on an online hosting platform. 
         [25/30 ] 
@@ -15,7 +15,7 @@ SPRINT-1 SUBMISSION GUIDELINES [85/110]
 7. This "Readme" file should be uploaded in Sprint-1 folder. 
 	[10/10]
 8. Size of the work completed
-        [20/30] 
+        [30/30] 
 
 General Comments
 
@@ -28,49 +28,33 @@ Roshan, Ayan, Sabahat: 0
 
 LIST OF REQUIREMENTS COMPLETED SO FAR
 
-<List down use cases completed so far>
+1. Register Account
+2. Add Product
+3. Delete Product
+4. User MarketPlace
+5. Dynamic Filtering by Category in MarketPlace
+6. Like Post
+7. Settings
+8. Switch User State
+9. Create Text Post
+10. Login
+11. Edit Profile
+12. Edit Product
+13. Registration Validation
+14. Inventory Dynamic Search Filtering
+15. View Profile
+16. View Community Posts
 
-1. Verify NGO and Medical Institution Workers.
-2. Report Users.
-3. Search.
-4. Create Request.
-5. Fulfil Request.
-6. Manage Reported Users.
-7. Onboard Blood Donors.
-8. Check Eligibility.
-9. Highlight Emergency.
-10. Use Newsfeed Facility.
-11. Login.
-12. Manage Account.
-13. Delete Account (User side).
-14. Delete Account (Admin side).
-15. Chat.
-16. Utilize Customer Support.
-
-
+Tasks 2, 5, 6, 8, 9, 13, 15 assigned to other members were done by Adil and Mohid as mentioned above
 
 
 ------------------------------------------------------------------------------------------------
 
 WHERE TO ACCESS THE SYSTEM
 
-link: blood-bound.netlify.app
+https://account.mongodb.com/account/login?n=%2Fv2%2F619137c42b50f721ecbda91f#metrics/replicaSet/61d4236ee0dada52ad14a6b4/explorer/
 
-Users (Username: Password.):
-
-• Admin: Admin. (user type: Admin)
-• Admin2: Admin2. (user type: Admin)
-• Requester: Requester. (user type: Blood_Requester, blood type: A+)
-• Donor: Donor. (user type: Blood_Donor, blood type: AB+)
-• Support: Support. (user type: Customer_Support)
-• NGO: NGO. (user type: NGO_Worker)
-• MI: MI. (user type: MI_Worker)
-• Dallah: a. (user type: Blood_Donor/Requester)
-
-
-
-
-
+github APK : SPROJ/Project 09/Development/Sprint-1/Petswala/app/ 
 ------------------------------------------------------------------------------------------------
 
 TESTING
@@ -78,7 +62,9 @@ TESTING
 
 Name : Use cases tested 
 
-<A : login, register etc.>
+<Adil : Register Account, Add Product, Delete Product, Buy Product, Like Post, Settings>
+<Mohid: Switch User State, Create Text Post, Login, Edit Profile, Edit Product>
+
 
 
 
