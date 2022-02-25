@@ -1,6 +1,7 @@
 const express = require('express')
 const router= express.Router()
 
+// These are defining routes, where we use express.router as middleware and handles all the path that followed by 'bar'
 router.get('/',(req,resp)=>{
     resp.status(200).json({
         message: 'get request for order working'

@@ -3,8 +3,7 @@ const app = express();
 const morgan = require('morgan');
 const bodyparser= require('body-parser');
 
-
-
+// getting all the required objects
 const product = require('./api/routes/product');
 const order= require('./api/routes/order');
 const res = require('express/lib/response');
@@ -12,16 +11,17 @@ const res = require('express/lib/response');
 app.use(morgan('dev'))
 // app.use(bodyparser.urlencoded({extended:false}));
 // app.use(bodyparser.json());  
+
+// using this to parse the link in the url and treat it as JSON object.
 app.use(express.json())   
 
-
+// reddirecting to specific route
 app.use('/product', product);
 app.use('/order', order);
 
 
 
 //error handling
-
 app.use((req,resp,next)=>{
 
     

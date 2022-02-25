@@ -2,7 +2,7 @@
 const mongoose= require('mongoose');
 const { stringify } = require('nodemon/lib/utils');
 
-
+// This is my product model, which will be called when we add a certain product
 
 const Product = mongoose.Schema ({
 

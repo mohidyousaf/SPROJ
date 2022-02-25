@@ -3,6 +3,8 @@ const router = express.Router();
 const bodyparser= require('body-parser');
 const Product= require('../models/productModel');
 
+// These are defining routes, where we use express.router as middleware and handles all the path that followed by 'bar'
+// router handles various post and get http requests.
 router.get('/',(req,resp)=>{
 
     Product.find()
@@ -19,6 +21,7 @@ router.get('/',(req,resp)=>{
 });
 
 router.post('/',(req,resp,next)=>{
+    // using our prodel model here
 
     const product = new Product({
         name: req.body.name,
