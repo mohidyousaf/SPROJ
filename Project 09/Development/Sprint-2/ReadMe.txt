@@ -1,4 +1,4 @@
-
+﻿
 SPRINT-2 SUBMISSION GUIDELINES
 
 1. Properly tested working system deployed on an online hosting platform.
@@ -43,12 +43,17 @@ LIST OF REQUIREMENTS COMPLETED SO FAR
 28. User Pets in Profile
 29. Creating a RESTful API
 30. Shifting of backend to NodeJS
+31. Deploying API on heroku
+32. Testing API on PostMan
 
 ------------------------------------------------------------------------------------------------
 
 WHERE TO ACCESS THE SYSTEM
 
 https://account.mongodb.com/account/login?n=%2Fv2%2F619137c42b50f721ecbda91f#metrics/replicaSet/61d4236ee0dada52ad14a6b4/explorer/
+https://stormy-dawn-83015.herokuapp.com/   (RESTful API)
+
+
 
 github APK : SPROJ/Project 09/Development/Sprint-2/Petswala/app/ 
 ------------------------------------------------------------------------------------------------
